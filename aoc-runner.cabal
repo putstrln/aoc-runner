@@ -1,4 +1,4 @@
-cabal-version: 2.2
+cabal-version: 1.12
 
 -- This file has been generated from package.yaml by hpack version 0.35.2.
 --
@@ -6,42 +6,45 @@ cabal-version: 2.2
 
 name:           aoc-runner
 version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/githubuser/aoc-runner#readme>
-homepage:       https://github.com/githubuser/aoc-runner#readme
-bug-reports:    https://github.com/githubuser/aoc-runner/issues
-author:         Author name here
+description:    Please see the README on GitHub at <https://github.com/putstrln/aoc-runner#readme>
+homepage:       https://github.com/putstrln/aoc-runner#readme
+bug-reports:    https://github.com/putstrln/aoc-runner/issues
+author:         putstrln
 maintainer:     example@example.com
-copyright:      2023 Author name here
-license:        BSD-3-Clause
+copyright:      2023 putstrln
+license:        MIT
 license-file:   LICENSE
 build-type:     Simple
 extra-source-files:
     README.md
-    CHANGELOG.md
 
 source-repository head
   type: git
-  location: https://github.com/githubuser/aoc-runner
+  location: https://github.com/putstrln/aoc-runner
 
 library
   exposed-modules:
       Lib
   other-modules:
       Paths_aoc_runner
-  autogen-modules:
-      Paths_aoc_runner
   hs-source-dirs:
       src
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
       base >=4.7 && <5
+    , bytestring
+    , directory
+    , filepath
+    , http-client
+    , http-conduit
+    , http-types
+    , regex-tdfa
+    , time
   default-language: Haskell2010
 
 executable aoc-runner-exe
   main-is: Main.hs
   other-modules:
-      Paths_aoc_runner
-  autogen-modules:
       Paths_aoc_runner
   hs-source-dirs:
       app
@@ -49,6 +52,14 @@ executable aoc-runner-exe
   build-depends:
       aoc-runner
     , base >=4.7 && <5
+    , bytestring
+    , directory
+    , filepath
+    , http-client
+    , http-conduit
+    , http-types
+    , regex-tdfa
+    , time
   default-language: Haskell2010
 
 test-suite aoc-runner-test
@@ -56,12 +67,18 @@ test-suite aoc-runner-test
   main-is: Spec.hs
   other-modules:
       Paths_aoc_runner
-  autogen-modules:
-      Paths_aoc_runner
   hs-source-dirs:
       test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       aoc-runner
     , base >=4.7 && <5
+    , bytestring
+    , directory
+    , filepath
+    , http-client
+    , http-conduit
+    , http-types
+    , regex-tdfa
+    , time
   default-language: Haskell2010

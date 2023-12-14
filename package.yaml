@@ -1,14 +1,13 @@
 name:                aoc-runner
 version:             0.1.0.0
-github:              "githubuser/aoc-runner"
-license:             BSD-3-Clause
-author:              "Author name here"
+github:              "putstrln/aoc-runner"
+license:             MIT
+author:              "putstrln"
 maintainer:          "example@example.com"
-copyright:           "2023 Author name here"
+copyright:           "2023 putstrln"
 
 extra-source-files:
 - README.md
-- CHANGELOG.md
 
 # Metadata used when publishing your package
 # synopsis:            Short description of your package
@@ -17,10 +16,18 @@ extra-source-files:
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description:         Please see the README on GitHub at <https://github.com/githubuser/aoc-runner#readme>
+description:         Please see the README on GitHub at <https://github.com/putstrln/aoc-runner#readme>
 
 dependencies:
 - base >= 4.7 && < 5
+- bytestring
+- directory
+- http-conduit
+- http-client
+- http-types
+- filepath
+- time
+- regex-tdfa
 
 ghc-options:
 - -Wall
