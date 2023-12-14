@@ -2,7 +2,7 @@ module Main (main) where
 
 import System.Environment (getArgs)
 
-import Lib (downloadTodayProblem, downloadProblem, saveSession, setup, submitAnswer)
+import Lib (downloadTodayProblem, downloadProblem, saveSession, setup, submitAnswer, submitTodayAnswer)
 
 main :: IO ()
 main = do
@@ -12,6 +12,7 @@ main = do
         ["session", val] -> saveSession val
         ["dl"] -> downloadTodayProblem
         ["dl", day]       -> downloadProblem day
+        ["ans", answer] -> submitTodayAnswer answer
         ["ans", day, answer] -> submitAnswer day answer
         ["--help"] -> printHelp
         _                  -> printHelp
