@@ -3,7 +3,7 @@ version:             0.1.0.0
 github:              "putstrln/aoc-runner"
 license:             MIT
 author:              "putstrln"
-maintainer:          "example@example.com"
+maintainer:          "putstrln"
 copyright:           "2023 putstrln"
 
 extra-source-files:
@@ -44,7 +44,7 @@ library:
   source-dirs: src
 
 executables:
-  aoc-runner-exe:
+  aoc:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
