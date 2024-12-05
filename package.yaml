@@ -28,6 +28,7 @@ dependencies:
 - filepath
 - time
 - regex-tdfa
+- text
 
 ghc-options:
 - -Wall

@@ -21,6 +21,8 @@ import Data.Time.Clock
 import Data.Time.Format
 import Data.Time
 import Text.Regex.TDFA
+import qualified Data.Text as T
+import qualified Data.Text.IO as TIO
 import Control.Monad (unless)
 
 aocUrl :: String
@@ -31,6 +33,9 @@ getDataPath = (</> "data") <$> getCurrentDirectory
 
 getSessionPath :: IO FilePath
 getSessionPath = (</> "session") <$> getDataPath
+
+getAnswerTemplatePath :: IO FilePath
+getAnswerTemplatePath = (</> "templates/AnswerTemplate.hs") <$> getCurrentDirectory
 
 setup :: IO()
 setup = do
@@ -79,12 +84,18 @@ downloadProblem day = do
                     dayPath = dataPath </> day
                     descPath = dayPath </> day ++ ".html"
                     inputPath = dayPath </> day ++ ".input"
+                    answerPath = dayPath </> day ++ ".answer.hs"
                     urlPaths = [("description", descPath, dayUrl), ("input", inputPath, inputUrl)]
                 putStrLn ""
                 putStrLn $ "Day " ++ day
                 createDirectoryIfMissing True dayPath
                 putStrLn $ "Day folder created (or already exists): " ++ dayPath
                 mapM_ (`downloadFile` session) urlPaths
+                doesFileExist answerPath >>= (\answerPathExists -> do
+                    answerTemplatePath <- getAnswerTemplatePath
+                    answerTemplateContent <- TIO.readFile answerTemplatePath
+                    let answerContent = T.replace "{day}" (T.pack day) answerTemplateContent
+                    unless answerPathExists (TIO.writeFile answerPath answerContent >> putStrLn ("Answer template copied to " ++ answerPath)))
             else do
                 putStrLn "Only valid dates are 1st to Christmas."
 
